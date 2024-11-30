@@ -8,6 +8,11 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["var(--font-hanken-grotesk)", "Inter", "sans-serif"],
+        serif: ["Georgia", "serif"],
+        mono: ["Menlo", "monospace"],
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
