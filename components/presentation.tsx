@@ -65,7 +65,7 @@ export default function Presentation({ slides }: { slides: SlideType[] }) {
   return (
     <>
       <AnimatePresence mode="sync">
-        <div className="min-h-screen dark:bg-zinc-950 p-12 flex items-center w-full">
+        <div className="min-h-screen dark:bg-zinc-950 w-full">
           <motion.div
             key={slide.id}
             initial={{
@@ -87,7 +87,9 @@ export default function Presentation({ slides }: { slides: SlideType[] }) {
               scale: 0.95,
             }}
             transition={{ duration: 0.5, ease: [0.175, 0.885, 0.32, 1.1] }}
-            className={cn("w-full mx-auto max-w-[1150px]")}
+            className={cn(
+              "flex items-center w-full h-screen mx-auto max-w-[1500px]"
+            )}
           >
             {(() => {
               switch (slide.type) {
@@ -107,19 +109,27 @@ export default function Presentation({ slides }: { slides: SlideType[] }) {
         </div>
       </AnimatePresence>
       {/* bg-zinc-100/90 dark:bg-zinc-900/90 */}
-      <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 p-1.5 rounded-full bg-gradient-to-b from-white to-zinc-100 dark:from-zinc-900 dark:to-zinc-950 border border-zinc-200/90 dark:border-zinc-800/90 shadow-xl flex justify-between items-center gap-2 w-72 backdrop-blur">
+      <motion.div
+        className="fixed left-1/2 transform -translate-x-1/2 p-1.5 rounded-t-2xl bg-gradient-to-b from-white to-zinc-100 dark:from-zinc-900 dark:to-zinc-950 border border-zinc-200/90 dark:border-zinc-800/90 flex justify-between items-center gap-2 w-72 backdrop-blur shadow-2xl"
+        initial={{
+          bottom: -30,
+        }}
+        whileHover={{
+          bottom: 0,
+        }}
+      >
         <div className="flex items-center justify-center">
           <button
             onClick={prevSlide}
             disabled={currentSlide === 0}
-            className="p-1 font-medium text-sm text-black dark:text-zinc-200 rounded-full disabled:opacity-40 disabled:cursor-not-allowed transition-all active:scale-90"
+            className="p-1 font-medium text-base text-black dark:text-zinc-200 rounded-full disabled:opacity-40 disabled:cursor-not-allowed transition-all active:scale-90"
           >
             <ChevronLeftIcon size={"1em"} />
           </button>
           <button
             onClick={nextSlide}
             disabled={currentSlide === slides.length - 1}
-            className="p-1 font-medium text-sm text-black dark:text-zinc-200 rounded-full disabled:opacity-40 disabled:cursor-not-allowed transition-all active:scale-90"
+            className="p-1 font-medium text-base text-black dark:text-zinc-200 rounded-full disabled:opacity-40 disabled:cursor-not-allowed transition-all active:scale-90"
           >
             <ChevronRightIcon size={"1em"} />
           </button>
@@ -132,7 +142,7 @@ export default function Presentation({ slides }: { slides: SlideType[] }) {
             </span>
           </div>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 }

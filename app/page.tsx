@@ -12,7 +12,6 @@ export type MediaSlide = {
   title: string;
   content: string[];
   type: "image" | "video";
-  layout?: "only" | "page";
 };
 
 export type Slide = TextSlide | MediaSlide;

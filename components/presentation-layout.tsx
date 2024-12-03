@@ -2,9 +2,11 @@
 import { Slide } from "@/app/page";
 import React, { useState } from "react";
 import Presentation from "./presentation";
+import { FullScreen, useFullScreenHandle } from "react-full-screen";
 
 export default function PresentationLayout() {
   const [slides, setSlides] = useState<Slide[]>([]);
+  const handle = useFullScreenHandle();
 
   return (
     <>
@@ -71,7 +73,13 @@ export default function PresentationLayout() {
           </label>
         </div>
       ) : (
-        <Presentation slides={slides} />
+        <FullScreen handle={handle} className="bg-white dark:bg-black">
+          {handle.active ? (
+            <Presentation slides={slides} />
+          ) : (
+            <button onClick={handle.enter}>fs</button>
+          )}
+        </FullScreen>
       )}
     </>
   );
