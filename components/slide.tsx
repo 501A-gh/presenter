@@ -61,6 +61,7 @@ export function VideoSlide({ slide }: { slide: MediaSlide }) {
   return (
     <div
       className={cn(
+        content.length === 1 && "max-h-screen mx-auto",
         content.length > 1 && "grid w-full gap-2 grid-cols-2",
         content.length > 10 && "grid-cols-5 *:h-60"
       )}
@@ -78,7 +79,7 @@ export function VideoSlide({ slide }: { slide: MediaSlide }) {
             className={cn(
               "border rounded-lg border-zinc-200 dark:border-zinc-800",
               content.length === 1
-                ? "max-h-screen"
+                ? "max-h-screen mx-auto"
                 : "bg-zinc-100 dark:bg-zinc-900 shadow-sm w-full h-full object-cover bg-center overflow-clip"
             )}
           >
