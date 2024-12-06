@@ -77,7 +77,12 @@ export default function PresentationLayout() {
           {handle.active ? (
             <Presentation slides={slides} />
           ) : (
-            <button onClick={handle.enter}>fs</button>
+            <button
+              className="h-screen w-full text-zinc-600"
+              onClick={handle.enter}
+            >
+              Click to enter fullscreen
+            </button>
           )}
         </FullScreen>
       )}
